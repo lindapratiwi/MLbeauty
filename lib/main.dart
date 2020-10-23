@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:layout/product_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final title = "Dashboard Olahraga";
+    final title = "Dashboard ML Beauty";
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -38,14 +39,14 @@ class Menu {
 }
 
 const List<Menu> menus = const [
-  const Menu(title: "Arm", icon: "gambar/dumbell.png"),
-  const Menu(title: "Chest", icon: "gambar/ladderup.png"),
-  const Menu(title: "Leg", icon: "gambar/treadmill.png"),
-  const Menu(title: "Suplemen", icon: "gambar/suplemen.png"),
-  const Menu(title: "Baju", icon: "gambar/baju.png"),
-  const Menu(title: "Celana", icon: "gambar/celana.png"),
-  const Menu(title: "Sepatu", icon: "gambar/sepatu.png"),
-  const Menu(title: "Aksesoris", icon: "gambar/aksesoris.png"),
+  const Menu(title: "Foundation", icon: "gambar/foundation.JPG"),
+  const Menu(title: "Eyeshadow", icon: "gambar/eyeshadow.JPG"),
+  const Menu(title: "Lips Cosmetic", icon: "gambar/lipstik.JPG"),
+  const Menu(title: "Nailpolish", icon: "gambar/nailpolish.JPG"),
+  const Menu(title: "Eyeliner", icon: "gambar/eyeliner.JPG"),
+  const Menu(title: "Mascara", icon: "gambar/mascara.JPG"),
+  const Menu(title: "Brush", icon: "gambar/brush.JPG"),
+  const Menu(title: "Eyebrows", icon: "gambar/eyebrow.JPG"),
 
 
 ];
@@ -61,7 +62,12 @@ class MenuCard extends StatelessWidget {
       color: Colors.white,
       child: InkWell(
         onTap: () {
-          _showDialog(context, menu);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductList()
+            ),
+          );
         },
         child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -79,27 +85,5 @@ class MenuCard extends StatelessWidget {
       ),
     );
   }
-
-  void _showDialog(BuildContext context, Menu menu) {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: new Text("Keterangan"),
-            content: new Text("Ini menu " + menu.title),
-            actions: <Widget>[
-              new FlatButton(
-                child: new Text("Close"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          );
-        }
-    );
-  }
-
-
 }
 
